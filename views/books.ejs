@@ -1,0 +1,68 @@
+<%- include("partials/header") %>
+
+<div class="filterBox">
+		<form id="FilterForm" class="ui form segment" action="/books" method="POST">
+			<div class="field">
+				<label>Genre</label>
+				<input type="text" placeholder="Genre" name="genre" >
+			</div>
+			<div class="field">
+				<label>Author</label>
+				<input type="text" placeholder="Author" name="author" >
+			</div>
+			<div class="field">
+				<label>Publisher</label>
+				<input type="text" placeholder="Publisher" name="publisher" >
+			</div>
+			<button class="ui inverted blue button" type="submit">
+				search
+			</button>
+			<div style="display:inline">
+				<a onclick="resetForm()" class="ui violet inverted button ">Reset</a>
+			</div>
+		</form>
+	</div>
+
+<span class="ui main text container" >
+	<div class="ui huge header">
+		Available Books
+	</div>
+	<div class="ui top attached segment">
+		<div class="ui divided items">
+			<% books.forEach(function(book){ %>
+				<div class="item">
+					<div class="image">
+						<img src="<%= book.image %>">
+					</div>
+					<div class="content">
+						<a class="header" href="/books/<%= book._id %>">
+							<%= book.title %>
+						</a>
+						<div class="meta">
+							<span>
+								<%= book.created.toDateString() %>
+							</span>
+						</div>
+						<div class="description">
+							<p>
+								<%= book.body.substring(0,150) %>...
+							</p>
+							<br>
+							<span><%= book.genre %></span>
+						</div>
+						<div class="extra">
+							<a href="/books/<%= book._id %>" class="ui float button inverted orange big">More info<i class="right chevron icon"></i></a>
+						</div>
+					</div>
+				</div>
+			<% }) %>
+		</div>
+	</div>
+</span>
+
+<script>
+	function resetForm(){
+		document.getElementById("FilterForm").reset();
+	}
+</script>
+<%- include("partials/footer") %>

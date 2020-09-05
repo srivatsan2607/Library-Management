@@ -1,0 +1,20 @@
+i.icon{
+	font-size:2em;
+}
+
+#delete{
+	display:inline;
+}
+
+@media (max-width:1099px){
+	.filterBox{
+		margin:20px auto;
+		width:50%;
+	}
+}
+
+@media (min-width:1100px){
+	.filterBox{
+		float:left;
+	}
+}

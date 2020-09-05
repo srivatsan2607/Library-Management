@@ -1,0 +1,32 @@
+<%- include("partials/header") %>
+	
+	<div class="ui container segment text main">
+		<div class="ui huge header"><%= book.title %></div>
+		<P>
+			By <strong><%= book.author %></strong> - <span><%= book.genre%></span> - <em><%= book.publisher %></em>
+		</P>
+		<div class="ui top attached">
+			<div class="item">
+				<img class="ui centered rounded image" src="<%= book.image %>">
+				<div class="content">
+					<br>
+					<span><%= book.created.toDateString() %></span>
+				</div>
+				<div class="description">
+					<p>
+						<%= book.body %>
+					</p>
+				</div>
+				<br>
+				<div>
+					<a href="/books/view/<%= book.fileId %>" class="ui inverted green 							button">Download</a>
+					<a href="/books/<%= book._id %>/edit" class="ui button inverted brown">Edit 						Book</a>
+					<form action="/books/<%= book._id %>?_method=DELETE" method="POST" 		style="display:inline">
+						<button class="ui button inverted red">Delete</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>	
+
+<%- include("partials/footer") %>
